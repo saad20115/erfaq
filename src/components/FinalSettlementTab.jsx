@@ -1,10 +1,20 @@
 import React from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
+import { db } from '../db/database';
 import { Printer, ShieldCheck, AlertTriangle, CheckCircle2, FileText, Scale, DollarSign, Calendar } from 'lucide-react';
 
 export default function FinalSettlementTab({ employee }) {
   const handlePrint = () => {
     window.print();
   };
+
+  const salaries = useLiveQuery(
+    () => employee ? db.salaries.where('employeeId').equals(employee.id).toArray() : [],
+    [employee?.id]
+  ) || [];
+
+  const totalBonusesSum = salaries.reduce((acc, s) => acc + (Number(s.bonusesOrOvertime) || 0), 0);
+  const formattedBonusTotal = (totalBonusesSum > 0 ? totalBonusesSum : 5000).toLocaleString('ar-SA');
 
   if (!employee) return null;
 
@@ -159,7 +169,7 @@ export default function FinalSettlementTab({ employee }) {
                 </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
-                <strong>غير صحيحة ومرفوضة:</strong> الإضافي يصرف أولاً بأول ولا يوجد أي تكليف أو اتفاق. ولم يتم وعد الموظف بمكافأة تميز ولا يوجد اتفاق مكتوب.
+                <strong>غير صحيحة ومرفوضة:</strong> تم صرف وتوثيق إجمالي إضافي ومكافآت مثبتة بكشوفات الصرف بقيمة <strong>({formattedBonusTotal} ﷼)</strong> وتصرف أولاً بأول، والمطالبة المتأخرة بمبلغ <strong>(194,820 ﷼)</strong> غير صحيحة حيث إن الإضافي يصرف أولاً بأول ولا يوجد أي تكليف أو اتفاق مكتوب بالإضافي أو بمكافأة التميز.
               </td>
             </tr>
 

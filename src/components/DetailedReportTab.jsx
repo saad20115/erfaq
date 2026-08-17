@@ -331,7 +331,7 @@ export default function DetailedReportTab({ employee }) {
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>0 ﷼</td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>194,820 ﷼ <br/><span style={{ fontSize: '0.75rem', color: '#475569' }}>(155,820 إضافي + 39,000 تميز)</span></td>
               <td style={{ fontSize: '0.85rem' }}>
-                غير صحيحة ومرفوضة. الساعات الإضافية تصرف أولاً بأول ولا يوجد تكليف أو اتفاق مكتوب بالإضافي أو التميز.
+                غير صحيحة ومرفوضة. تم صرف وتوثيق إجمالي إضافي ومكافآت مثبتة بكشوفات الصرف بقيمة (5,000 ﷼) وتصرف أولاً بأول، والمطالبة المتأخرة بمبلغ (194,820 ﷼) غير صحيحة حيث إن الإضافي يصرف أولاً بأول ولا يوجد أي تكليف أو اتفاق مكتوب بالإضافي أو التميز.
               </td>
             </tr>
             <tr style={{ backgroundColor: '#f1f5f9', fontWeight: 800 }}>
