@@ -85,13 +85,13 @@ export default function FinalSettlementTab({ employee }) {
           1. مقارنة بنود المخالصة النهائية والمستحقات (حساب الشركة المعتمد vs ادعاءات الموظف)
         </h3>
 
-        <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
-              <th style={{ padding: '0.75rem', textAlign: 'right' }}>بند التسوية / المستحقات</th>
-              <th style={{ padding: '0.75rem', textAlign: 'center', backgroundColor: '#065f46' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
-              <th style={{ padding: '0.75rem', textAlign: 'center', backgroundColor: '#991b1b' }}>حساب طلب الموظف</th>
-              <th style={{ padding: '0.75rem', textAlign: 'right' }}>الرأي والملاحظات المحاسبية والرأي الرقابي</th>
+              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '20%' }}>بند التسوية / المستحقات</th>
+              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#065f46', width: '22%' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
+              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#991b1b', width: '22%' }}>حساب طلب الموظف</th>
+              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '36%' }}>الرأي والملاحظات المحاسبية والرأي الرقابي</th>
             </tr>
           </thead>
           <tbody>
@@ -213,15 +213,15 @@ export default function FinalSettlementTab({ employee }) {
           2. توضيح وتتبع تواريخ الخروج والعودة (بناءً على برنت الجوازات والإجازات)
         </h3>
 
-        <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ backgroundColor: '#1e293b', color: '#ffffff' }}>
-              <th>#</th>
-              <th>يوم وتاريخ الذهاب</th>
-              <th>يوم وتاريخ العودة</th>
-              <th>الفرق بالأيام (الليالي)</th>
-              <th>إجمالي الأيام (شاملاً اليومين)</th>
-              <th>الحالة وسداد الراتب</th>
+              <th style={{ width: '5%', textAlign: 'center' }}>#</th>
+              <th style={{ width: '20%', textAlign: 'center' }}>يوم وتاريخ الذهاب</th>
+              <th style={{ width: '20%', textAlign: 'center' }}>يوم وتاريخ العودة</th>
+              <th style={{ width: '15%', textAlign: 'center' }}>الفرق بالأيام (الليالي)</th>
+              <th style={{ width: '18%', textAlign: 'center' }}>إجمالي الأيام (شاملاً اليومين)</th>
+              <th style={{ width: '22%', textAlign: 'center' }}>الحالة وسداد الراتب</th>
             </tr>
           </thead>
           <tbody>
