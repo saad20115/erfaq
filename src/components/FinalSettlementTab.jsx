@@ -331,15 +331,12 @@ export default function FinalSettlementTab({ employee }) {
         <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
-              <th style={{ width: '4%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>#</th>
-              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الشهر / السنة</th>
-              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الراتب الأساسي 💵</th>
-              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل سيارة 🚗</th>
-              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل اتصال 📞</th>
-              <th style={{ width: '13%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
-              <th style={{ width: '12%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>الإضافي / المكافآت 🎁</th>
-              <th style={{ width: '13%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>الصافي المستحق 💵</th>
-              <th style={{ width: '15%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات والتعديلات 📝</th>
+              <th style={{ width: '5%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>#</th>
+              <th style={{ width: '15%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الشهر / السنة</th>
+              <th style={{ width: '20%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
+              <th style={{ width: '18%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>إجمالي الإضافي 🎁</th>
+              <th style={{ width: '20%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>إجمالي المستلم 💵</th>
+              <th style={{ width: '22%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات 📝</th>
             </tr>
           </thead>
           <tbody>
@@ -356,9 +353,6 @@ export default function FinalSettlementTab({ employee }) {
                 <tr key={s.id || idx} style={{ backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f8fafc' }}>
                   <td style={{ textAlign: 'center', fontWeight: 600 }}>{sortedSalaries.length - idx}</td>
                   <td style={{ textAlign: 'center', fontWeight: 800, color: '#1e293b' }}>{s.yearMonth}</td>
-                  <td style={{ textAlign: 'center' }}>{basic.toLocaleString('ar-SA')} ﷼</td>
-                  <td style={{ textAlign: 'center' }}>{car.toLocaleString('ar-SA')} ﷼</td>
-                  <td style={{ textAlign: 'center' }}>{phone.toLocaleString('ar-SA')} ﷼</td>
                   <td style={{ textAlign: 'center', fontWeight: 800, color: '#1e3a8a', backgroundColor: 'rgba(30, 58, 138, 0.04)' }}>
                     {grossTotal.toLocaleString('ar-SA')} ﷼
                   </td>
@@ -368,7 +362,7 @@ export default function FinalSettlementTab({ employee }) {
                   <td style={{ textAlign: 'center', fontWeight: 900, color: '#047857', backgroundColor: 'rgba(4, 120, 87, 0.05)' }}>
                     {net.toLocaleString('ar-SA')} ﷼
                   </td>
-                  <td style={{ fontSize: '0.8rem', color: '#334155' }}>
+                  <td style={{ fontSize: '0.82rem', color: '#334155' }}>
                     {s.notes ? s.notes : (s.isPaidLeave ? `إجازة مدفوعة (${s.paidLeaveType || 'سنوية'})` : '-')}
                   </td>
                 </tr>
