@@ -18,6 +18,7 @@ export default function FinalSettlementTab({ employee }) {
     [employee?.id]
   ) || [];
 
+  const sortedSalaries = [...salaries].sort((a, b) => (b.yearMonth || '').localeCompare(a.yearMonth || ''));
   const totalBonusesSum = salaries.reduce((acc, s) => acc + (Number(s.bonusesOrOvertime) || 0), 0);
   const formattedBonusTotal = (totalBonusesSum > 0 ? totalBonusesSum : 5000).toLocaleString('ar-SA');
 
@@ -319,6 +320,66 @@ export default function FinalSettlementTab({ employee }) {
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* Section 3: Detailed Monthly Salaries Statement Table (2025-01 down to 2020-01) */}
+      <div className="print-page-break-before" style={{ marginTop: '2rem' }}>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 900, marginBottom: '1rem', color: '#0f172a', borderRight: '4px solid #3b82f6', paddingRight: '0.5rem' }}>
+          3. البيان التفصيلي لكشوفات الرواتب الشهرية والبدلات (مرتبة هبوطياً من يناير 2025 إلى يناير 2020)
+        </h3>
+
+        <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
+          <thead>
+            <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+              <th style={{ width: '4%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>#</th>
+              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الشهر / السنة</th>
+              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الراتب الأساسي 💵</th>
+              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل سيارة 🚗</th>
+              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل اتصال 📞</th>
+              <th style={{ width: '12%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
+              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>الإضافي / المكافآت 🎁</th>
+              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#831843' }}>الخصومات 🔻</th>
+              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>الصافي المستحق 💵</th>
+              <th style={{ width: '12%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات والتعديلات 📝</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedSalaries.map((s, idx) => {
+              const basic = s.basicSalary !== undefined ? Number(s.basicSalary) : 15000;
+              const car = s.carAllowance !== undefined ? Number(s.carAllowance) : 1500;
+              const phone = s.phoneAllowance !== undefined ? Number(s.phoneAllowance) : 375;
+              const grossTotal = basic + car + phone;
+              const bonus = Number(s.bonusesOrOvertime) || 0;
+              const ded = (car === 0 && phone === 0) ? 0 : (Number(s.deductions) || 0);
+              const net = basic + car + phone + bonus - ded;
+
+              return (
+                <tr key={s.id || idx} style={{ backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f8fafc' }}>
+                  <td style={{ textAlign: 'center', fontWeight: 600 }}>{sortedSalaries.length - idx}</td>
+                  <td style={{ textAlign: 'center', fontWeight: 800, color: '#1e293b' }}>{s.yearMonth}</td>
+                  <td style={{ textAlign: 'center' }}>{basic.toLocaleString('ar-SA')} ﷼</td>
+                  <td style={{ textAlign: 'center' }}>{car.toLocaleString('ar-SA')} ﷼</td>
+                  <td style={{ textAlign: 'center' }}>{phone.toLocaleString('ar-SA')} ﷼</td>
+                  <td style={{ textAlign: 'center', fontWeight: 800, color: '#1e3a8a', backgroundColor: 'rgba(30, 58, 138, 0.04)' }}>
+                    {grossTotal.toLocaleString('ar-SA')} ﷼
+                  </td>
+                  <td style={{ textAlign: 'center', fontWeight: 800, color: bonus > 0 ? '#b45309' : '#64748b' }}>
+                    {bonus > 0 ? `${bonus.toLocaleString('ar-SA')} ﷼` : '-'}
+                  </td>
+                  <td style={{ textAlign: 'center', color: ded > 0 ? '#b91c1c' : '#64748b' }}>
+                    {ded > 0 ? `-${ded.toLocaleString('ar-SA')} ﷼` : '-'}
+                  </td>
+                  <td style={{ textAlign: 'center', fontWeight: 900, color: '#047857', backgroundColor: 'rgba(4, 120, 87, 0.05)' }}>
+                    {net.toLocaleString('ar-SA')} ﷼
+                  </td>
+                  <td style={{ fontSize: '0.8rem', color: '#334155' }}>
+                    {s.notes ? s.notes : (s.isPaidLeave ? `إجازة مدفوعة (${s.paidLeaveType || 'سنوية'})` : '-')}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
