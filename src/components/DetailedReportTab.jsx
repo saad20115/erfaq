@@ -360,7 +360,7 @@ export default function DetailedReportTab({ employee }) {
         {/* Red Audit Callout Note for Service Periods */}
         <div style={{ background: '#fef2f2', border: '1.5px solid #ef4444', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', marginTop: '0.75rem', color: '#991b1b', fontSize: '0.82rem', lineHeight: '1.5' }}>
           <div style={{ fontWeight: 800, fontSize: '0.88rem', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#b91c1c' }}>
-            📌 ملاحظة رقابية وحسابية بشأن مدة الخدمة مقسمة إلى فترتين:
+            📌 ملاحظة بشأن مدة الخدمة مقسمة إلى فترتين:
           </div>
           <ul style={{ margin: 0, paddingRight: '1.2rem', listStyleType: 'disc' }}>
             <li>
