@@ -333,14 +333,13 @@ export default function FinalSettlementTab({ employee }) {
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
               <th style={{ width: '4%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>#</th>
               <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الشهر / السنة</th>
-              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الراتب الأساسي 💵</th>
-              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل سيارة 🚗</th>
-              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل اتصال 📞</th>
-              <th style={{ width: '12%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
-              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>الإضافي / المكافآت 🎁</th>
-              <th style={{ width: '10%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#831843' }}>الخصومات 🔻</th>
-              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>الصافي المستحق 💵</th>
-              <th style={{ width: '12%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات والتعديلات 📝</th>
+              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الراتب الأساسي 💵</th>
+              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل سيارة 🚗</th>
+              <th style={{ width: '11%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>بدل اتصال 📞</th>
+              <th style={{ width: '13%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
+              <th style={{ width: '12%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>الإضافي / المكافآت 🎁</th>
+              <th style={{ width: '13%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>الصافي المستحق 💵</th>
+              <th style={{ width: '15%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات والتعديلات 📝</th>
             </tr>
           </thead>
           <tbody>
@@ -365,9 +364,6 @@ export default function FinalSettlementTab({ employee }) {
                   </td>
                   <td style={{ textAlign: 'center', fontWeight: 800, color: bonus > 0 ? '#b45309' : '#64748b' }}>
                     {bonus > 0 ? `${bonus.toLocaleString('ar-SA')} ﷼` : '-'}
-                  </td>
-                  <td style={{ textAlign: 'center', color: ded > 0 ? '#b91c1c' : '#64748b' }}>
-                    {ded > 0 ? `-${ded.toLocaleString('ar-SA')} ﷼` : '-'}
                   </td>
                   <td style={{ textAlign: 'center', fontWeight: 900, color: '#047857', backgroundColor: 'rgba(4, 120, 87, 0.05)' }}>
                     {net.toLocaleString('ar-SA')} ﷼
