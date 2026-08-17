@@ -5,7 +5,12 @@ import { Printer, ShieldCheck, AlertTriangle, CheckCircle2, FileText, Scale, Dol
 
 export default function FinalSettlementTab({ employee }) {
   const handlePrint = () => {
+    const originalTitle = document.title;
+    document.title = ' ';
     window.print();
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 500);
   };
 
   const salaries = useLiveQuery(
@@ -208,7 +213,7 @@ export default function FinalSettlementTab({ employee }) {
       </div>
 
       {/* Passport Exit/Re-entry Breakout Table */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div className="print-page-break-before" style={{ marginBottom: '2rem' }}>
         <h3 style={{ fontSize: '1.1rem', fontWeight: 900, marginBottom: '1rem', color: '#0f172a', borderRight: '4px solid #059669', paddingRight: '0.5rem' }}>
           2. توضيح وتتبع تواريخ الخروج والعودة (بناءً على برنت الجوازات والإجازات)
         </h3>
