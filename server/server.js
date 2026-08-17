@@ -215,8 +215,7 @@ app.post('/api/db', async (req, res) => {
         }
       }
 
-      writeFallbackDb(req.body);
-      return res.json({ success: true, message: 'MySQL Database updated successfully' });
+      return res.json({ success: true, message: 'MySQL Database updated successfully and persistent' });
     } catch (err) {
       console.error('MySQL Save Error:', err.message);
     }
