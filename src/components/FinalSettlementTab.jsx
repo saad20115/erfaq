@@ -284,22 +284,6 @@ export default function FinalSettlementTab({ employee }) {
           </tbody>
         </table>
       </div>
-
-      {/* Official Signatures Footer Bar */}
-      <div style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '2px double #0f172a', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', textAlign: 'center', fontSize: '0.9rem' }}>
-        <div>
-          <div style={{ fontWeight: 800 }}>إعداد المحاسب / المراجع:</div>
-          <div style={{ marginTop: '2.5rem' }}>الاسم والتوقيع: .....................</div>
-        </div>
-        <div>
-          <div style={{ fontWeight: 800 }}>اعتماد مدير الموارد البشرية:</div>
-          <div style={{ marginTop: '2.5rem' }}>الاسم والتوقيع: .....................</div>
-        </div>
-        <div>
-          <div style={{ fontWeight: 800 }}>اعتماد الإدارة المالية والرقابة:</div>
-          <div style={{ marginTop: '2.5rem' }}>الاسم والتوقيع: .....................</div>
-        </div>
-      </div>
     </div>
   );
 }
