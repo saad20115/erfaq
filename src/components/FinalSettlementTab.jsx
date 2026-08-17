@@ -298,6 +298,27 @@ export default function FinalSettlementTab({ employee }) {
             </tr>
           </tbody>
         </table>
+
+        {/* Red Audit Callout Note for Service Periods */}
+        <div style={{ background: '#fef2f2', border: '1.5px solid #ef4444', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', marginTop: '0.75rem', color: '#991b1b', fontSize: '0.82rem', lineHeight: '1.5' }}>
+          <div style={{ fontWeight: 800, fontSize: '0.88rem', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#b91c1c' }}>
+            📌 ملاحظة رقابية وحسابية بشأن مدة الخدمة مقسمة إلى فترتين:
+          </div>
+          <ul style={{ margin: 0, paddingRight: '1.2rem', listStyleType: 'disc' }}>
+            <li>
+              <strong>الفترة الأولى (المسواة والمصفاة سابقاً):</strong> من 01-06-2004 حتى 31-12-2020 ⬅️ مدتها <strong>16 سنة و 7 أشهر (199 شهراً)</strong> — (أقر الموظف باستلام تصفيتها الكاملة بمبلغ 211,250 ﷼).
+            </li>
+            <li>
+              <strong>الفترة الثانية (المعتمدة في التصفية بالمخالصة):</strong> من 01-01-2021 حتى 28-02-2025 ⬅️ مدتها <strong>4 سنوات و 2 شهر (50 شهراً)</strong> — (احتسب عنها مكافأة قدرها 62,375 ﷼).
+            </li>
+            <li>
+              <strong>مدة الخدمة الفعلية حتى تاريخ الخروج:</strong> من 01-01-2021 حتى 22-01-2025 ⬅️ مدتها <strong>4 سنوات و 21 يوماً</strong>.
+            </li>
+            <li>
+              <strong>تاريخ نقل الكفالة الفعلي الرسمي:</strong> تم نقل الكفالة بتاريخ <strong>22-10-2025</strong> (حيث بلغت الفترة من 01-01-2021 حتى نقل الكفالة 4 سنوات و 9 أشهر و 21 يوماً).
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
