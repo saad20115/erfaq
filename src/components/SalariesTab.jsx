@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db, ensureMonthlySalaryRecords } from '../db/database';
+import { db, ensureMonthlySalaryRecords, pushToServer } from '../db/database';
 import { 
   Calendar, CheckCircle2, XCircle, MinusCircle, 
   Paperclip, Filter, Edit3, DollarSign, Search, Sparkles,
@@ -292,6 +292,7 @@ export default function SalariesTab({ employee }) {
       } : null);
     }
 
+    await pushToServer();
     setEditingSalaryId(null);
   };
 
@@ -935,6 +936,7 @@ export default function SalariesTab({ employee }) {
                                   await db.salaries.update(selectedSalaryForPanel.id, { status: 'missing' });
                                   setSelectedSalaryForPanel(prev => prev ? { ...prev, status: 'missing' } : null);
                                 }
+                                await pushToServer();
                               }}
                               title="حذف المرفق"
                             >

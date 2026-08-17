@@ -17,9 +17,20 @@ db.version(1).stores({
 // Central Server Sync
 export async function syncWithServer() {
   try {
+    const localAtts = await db.attachments.toArray();
+    const localWithHighlight = localAtts.filter(a => a.highlightBox && a.highlightBox.active);
+
     const res = await fetch('/api/db');
     if (res.ok) {
       const serverData = await res.json();
+      const serverAtts = serverData.attachments || [];
+
+      // If local storage has attachments with saved highlights and server has fewer, PUSH local to server!
+      if (localAtts.length > 0 && (serverAtts.length === 0 || localWithHighlight.length > 0)) {
+        await pushToServer();
+        return true;
+      }
+
       if (serverData && serverData.employees && serverData.employees.length > 0) {
         await db.transaction('rw', [db.employees, db.contracts, db.salaries, db.bonuses, db.otherPayments, db.leaves, db.attachments], async () => {
           await db.employees.clear();
@@ -336,6 +347,7 @@ export async function createOrGetHaniEmployee() {
           fileType: 'image/png',
           fileSize: 128461,
           fileData: '/jan_2025_statement.png',
+          highlightBox: { active: true, y: 68, height: 25, width: 96, x: 2 },
           uploadDate: new Date().toISOString()
         });
       }
@@ -353,6 +365,7 @@ export async function createOrGetHaniEmployee() {
             fileType: 'image/png',
             fileSize: 128461,
             fileData: '/jan_2025_statement.png',
+            highlightBox: { active: true, y: 68, height: 25, width: 96, x: 2 },
             uploadDate: new Date().toISOString()
           });
           if (existing.status !== 'attached') {
