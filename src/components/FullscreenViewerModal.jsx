@@ -28,6 +28,7 @@ export default function FullscreenViewerModal({ attachment, onClose, onSaveHighl
   const handleSaveHighlight = async () => {
     const updatedBox = { ...highlightBox, active: isHighlightActive };
     await db.attachments.update(attachment.id, { highlightBox: updatedBox });
+    await pushToServer();
     if (onSaveHighlight) {
       onSaveHighlight({ ...attachment, highlightBox: updatedBox });
     }

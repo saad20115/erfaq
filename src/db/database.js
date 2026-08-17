@@ -14,6 +14,61 @@ db.version(1).stores({
   attachments: '++id, employeeId, category, refId, fileName'
 });
 
+// Central Server Sync
+export async function syncWithServer() {
+  try {
+    const res = await fetch('/api/db');
+    if (res.ok) {
+      const serverData = await res.json();
+      if (serverData && serverData.employees && serverData.employees.length > 0) {
+        await db.transaction('rw', [db.employees, db.contracts, db.salaries, db.bonuses, db.otherPayments, db.leaves, db.attachments], async () => {
+          await db.employees.clear();
+          await db.contracts.clear();
+          await db.salaries.clear();
+          await db.bonuses.clear();
+          await db.otherPayments.clear();
+          await db.leaves.clear();
+          await db.attachments.clear();
+
+          if (serverData.employees?.length) await db.employees.bulkAdd(serverData.employees);
+          if (serverData.contracts?.length) await db.contracts.bulkAdd(serverData.contracts);
+          if (serverData.salaries?.length) await db.salaries.bulkAdd(serverData.salaries);
+          if (serverData.bonuses?.length) await db.bonuses.bulkAdd(serverData.bonuses);
+          if (serverData.otherPayments?.length) await db.otherPayments.bulkAdd(serverData.otherPayments);
+          if (serverData.leaves?.length) await db.leaves.bulkAdd(serverData.leaves);
+          if (serverData.attachments?.length) await db.attachments.bulkAdd(serverData.attachments);
+        });
+        return true;
+      }
+    }
+  } catch (err) {
+    console.log('Central Server API offline, using local IndexedDB.', err);
+  }
+  return false;
+}
+
+export async function pushToServer() {
+  try {
+    const employees = await db.employees.toArray();
+    const contracts = await db.contracts.toArray();
+    const salaries = await db.salaries.toArray();
+    const bonuses = await db.bonuses.toArray();
+    const otherPayments = await db.otherPayments.toArray();
+    const leaves = await db.leaves.toArray();
+    const attachments = await db.attachments.toArray();
+
+    await fetch('/api/db', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        employees, contracts, salaries, bonuses, otherPayments, leaves, attachments
+      })
+    });
+  } catch (e) {
+    console.warn('Could not push to central server API', e);
+  }
+}
+
 // Helper: Calculate months list between startYearMonth ('2020-01') and endYearMonth ('2025-01')
 export function generateMonthList(startYM = '2020-01', endYM = '2025-01') {
   const months = [];
@@ -205,13 +260,19 @@ export async function importDatabaseBackup(jsonString) {
       await db.attachments.bulkAdd(attachments);
     }
   });
+
+  await pushToServer();
 }
 
 // Helper: Seed initial clean data
 export async function seedDemoDataIfEmpty() {
-  const empCount = await db.employees.count();
-  if (empCount === 0) {
-    await createOrGetHaniEmployee();
+  const synced = await syncWithServer();
+  if (!synced) {
+    const empCount = await db.employees.count();
+    if (empCount === 0) {
+      await createOrGetHaniEmployee();
+      await pushToServer();
+    }
   }
 }
 
