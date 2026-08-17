@@ -244,38 +244,116 @@ export default function DetailedReportTab({ employee }) {
       {/* 4. Leaves Section */}
       <div style={{ marginBottom: '1.75rem' }}>
         <h3 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.5rem', borderRight: '4px solid #2563eb', paddingRight: '0.5rem' }}>
-          4. رصيد الإجازات المستخدم ({leaves.length})
+          4. رصيد الإجازات وتتبع الخروج والعودة (برنت الجوازات)
         </h3>
-        <table className="custom-table">
+        <table className="custom-table" style={{ marginBottom: '1rem' }}>
           <thead>
             <tr>
               <th>#</th>
-              <th>نوع الإجازة</th>
-              <th>فترة الإجازة</th>
-              <th>عدد الأيام</th>
-              <th>المستحق/الخصم</th>
-              <th>إثبات القرار/الصرف</th>
+              <th>يوم وتاريخ الذهاب</th>
+              <th>يوم وتاريخ العودة</th>
+              <th>الفرق بالأيام (الليالي)</th>
+              <th>إجمالي الأيام (شاملاً اليومين)</th>
+              <th>الحالة وسداد الراتب</th>
             </tr>
           </thead>
           <tbody>
-            {leaves.length === 0 ? (
-              <tr><td colSpan={6} style={{ textAlign: 'center' }}>لا توجد إجازات مسجلة</td></tr>
-            ) : (
-              leaves.map((item, idx) => (
-                <tr key={item.id}>
-                  <td>{idx + 1}</td>
-                  <td style={{ fontWeight: 700 }}>{item.leaveType}</td>
-                  <td>{item.startDate} إلى {item.endDate}</td>
-                  <td>{item.daysCount} يوم</td>
-                  <td>{(Number(item.deductionOrPay) || 0).toLocaleString('ar-SA')} ريال</td>
-                  <td>
-                    {item.status === 'attached' && <span className="status-badge attached">تم الإرفاق ✅</span>}
-                    {item.status === 'missing' && <span className="status-badge missing">غير مرفق ❌</span>}
-                    {item.status === 'na' && <span className="status-badge na">لا يتطلب 🚫</span>}
-                  </td>
-                </tr>
-              ))
-            )}
+            <tr><td>1</td><td>الثلاثاء 19-07-2022</td><td>مفقود ❌</td><td>غير محدد</td><td>غير محدد</td><td>استلم راتب كامل</td></tr>
+            <tr><td>2</td><td>الثلاثاء 20-09-2022</td><td>الثلاثاء 27-09-2022</td><td>7</td><td>8</td><td>استلم راتب كامل</td></tr>
+            <tr><td>3</td><td>الخميس 13-04-2023</td><td>الأحد 30-04-2023</td><td>17</td><td>18</td><td>استلم راتب كامل</td></tr>
+            <tr><td>4</td><td>الخميس 17-08-2023</td><td>الأحد 03-09-2023</td><td>17</td><td>18</td><td>استلم راتب كامل</td></tr>
+            <tr><td>5</td><td>الإثنين 01-04-2024</td><td>السبت 20-04-2024</td><td>19</td><td>20</td><td>استلم راتب كامل</td></tr>
+            <tr><td>6</td><td>الإثنين 23-09-2024</td><td>السبت 05-10-2024</td><td>12</td><td>13</td><td>استلم راتب كامل</td></tr>
+            <tr style={{ backgroundColor: '#fef08a', fontWeight: 700 }}>
+              <td colSpan={3} style={{ textAlign: 'left' }}>الرصيد المستفاد به (خروج وعودة)</td>
+              <td>72</td>
+              <td>77</td>
+              <td>استلم راتب كامل عن جميع هذه الفترات</td>
+            </tr>
+            <tr style={{ backgroundColor: '#fef08a', fontWeight: 700 }}>
+              <td colSpan={3} style={{ textAlign: 'left' }}>الرصيد المتبقي بالمخالصة المستحق صرفه</td>
+              <td>52</td>
+              <td>52</td>
+              <td>مستحق الصرف (26,000 ﷼)</td>
+            </tr>
+            <tr style={{ backgroundColor: '#e2e8f0', fontWeight: 800 }}>
+              <td colSpan={3} style={{ textAlign: 'left' }}>إجمالي الرصيد المستهلك والمستحق</td>
+              <td>124</td>
+              <td>129</td>
+              <td>الرصيد المستحق التراكمي حتى 2025-02 هو 125 يوماً</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* 5. Final Settlement & Audit Comparison Table */}
+      <div style={{ marginBottom: '2rem', background: '#f8fafc', padding: '1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid #cbd5e1' }}>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 900, marginBottom: '1rem', color: '#0f172a', borderRight: '4px solid #059669', paddingRight: '0.5rem' }}>
+          ⚖️ جدول المخالصة النهائية والمقارنة المحاسبية (حساب الشركة vs ادعاءات الموظف)
+        </h3>
+
+        <table className="custom-table" style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#ffffff' }}>
+          <thead>
+            <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+              <th style={{ padding: '0.6rem', textAlign: 'right' }}>البند / البيان</th>
+              <th style={{ padding: '0.6rem', textAlign: 'center', backgroundColor: '#065f46' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
+              <th style={{ padding: '0.6rem', textAlign: 'center', backgroundColor: '#991b1b' }}>حساب ادعاءات الموظف</th>
+              <th style={{ padding: '0.6rem', textAlign: 'right' }}>الرأي والملاحظات الرقابية / القانونية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ fontWeight: 700 }}>1. مكافأة نهاية الخدمة</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>62,375 ﷼</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>413,255.21 ﷼</td>
+              <td style={{ fontSize: '0.85rem' }}>
+                أقر الموظف باستلام 211,250 ﷼ عن الفترة من 2004 حتى 2020. الصافي المتبقي المعتمد للفترة الثانية هو 62,375 ﷼. مطالبتهم بـ 413,255 غير صحيحة.
+              </td>
+            </tr>
+            <tr>
+              <td style={{ fontWeight: 700 }}>2. مستحقات رصيد الإجازات</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>26,000 ﷼ <br/><span style={{ fontSize: '0.75rem', color: '#475569' }}>(52 يوماً × 500 ﷼)</span></td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>54,055 ﷼ <br/><span style={{ fontSize: '0.75rem', color: '#475569' }}>(يطالب بـ 74 يوماً)</span></td>
+              <td style={{ fontSize: '0.85rem' }}>
+                مطالبة الموظف بـ 74 يوماً لا تتوافق مع سجلات وتواريخ الخروج والعودة. الرصيد المتبقي المستحق بالمخالصة هو 52 يوماً فقط.
+              </td>
+            </tr>
+            <tr>
+              <td style={{ fontWeight: 700 }}>3. عمل عن بعد خلال الإجازات (73 يوماً)</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>18,250 ﷼ <br/><span style={{ fontSize: '0.75rem', color: '#475569' }}>(73 يوماً × 250 ﷼ اتفاق 50%)</span></td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>-</td>
+              <td style={{ fontSize: '0.85rem' }}>
+                احتسبت بناءً على اتفاق العمل عن بعد بنسبة 50% من أجر اليوم (250 ﷼ × 73 يوم = 18,250 ﷼).
+              </td>
+            </tr>
+            <tr>
+              <td style={{ fontWeight: 700 }}>4. ساعات إضافية ومكافأة تميز مطالَب بها</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>0 ﷼</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>194,820 ﷼ <br/><span style={{ fontSize: '0.75rem', color: '#475569' }}>(155,820 إضافي + 39,000 تميز)</span></td>
+              <td style={{ fontSize: '0.85rem' }}>
+                غير صحيحة ومرفوضة. الساعات الإضافية تصرف أولاً بأول ولا يوجد تكليف أو اتفاق مكتوب بالإضافي أو التميز.
+              </td>
+            </tr>
+            <tr style={{ backgroundColor: '#f1f5f9', fontWeight: 800 }}>
+              <td>إجمالي المستحقات قبل الخصومات</td>
+              <td style={{ textAlign: 'center', color: '#065f46', fontSize: '1.05rem' }}>106,625 ﷼</td>
+              <td style={{ textAlign: 'center', color: '#991b1b', fontSize: '1.05rem' }}>662,130.21 ﷼</td>
+              <td>فروقات إجمالي المستحقات قبل الخصم.</td>
+            </tr>
+            <tr style={{ backgroundColor: '#fef2f2' }}>
+              <td style={{ fontWeight: 700, color: '#991b1b' }}>خصومات مبالغ مستلمة مسبقاً (حوالات بنكية)</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>-15,815 ﷼</td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>-15,815 ﷼</td>
+              <td style={{ fontSize: '0.85rem' }}>مثبتة بحوالات بنكية مسددة للموظف تحت حساب نهاية الخدمة والإجازات.</td>
+            </tr>
+            <tr style={{ backgroundColor: '#dcfce7', borderTop: '2px solid #059669', fontSize: '1.1rem', fontWeight: 900 }}>
+              <td style={{ color: '#065f46' }}>صافي المستحق النهائي المعتمد</td>
+              <td style={{ textAlign: 'center', color: '#065f46', fontSize: '1.25rem' }}>90,810 ﷼</td>
+              <td style={{ textAlign: 'center', color: '#991b1b', fontSize: '1.1rem' }}>646,315.21 ﷼</td>
+              <td style={{ color: '#065f46', fontSize: '0.9rem' }}>
+                الصافي النهائي القانوني والمحاسبي المستحق للموظف هو <strong>90,810 ﷼</strong>.
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
