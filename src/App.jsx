@@ -13,12 +13,13 @@ import LeavesTab from './components/LeavesTab';
 import DetailedReportTab from './components/DetailedReportTab';
 import AggregateDashboardTab from './components/AggregateDashboardTab';
 import BackupRestoreModal from './components/BackupRestoreModal';
+import FinalSettlementTab from './components/FinalSettlementTab';
 
 // Lucide Icons
 import { 
   Calendar, FileText, Award, DollarSign, 
   UserCheck, ShieldCheck, CheckCircle2, XCircle, 
-  MinusCircle, Plus, Users, Layers, AlertCircle 
+  MinusCircle, Plus, Users, Layers, AlertCircle, Scale
 } from 'lucide-react';
 
 export default function App() {
@@ -185,6 +186,15 @@ export default function App() {
                   </button>
 
                   <button 
+                    className={`tab-btn ${activeEmpSubTab === 'settlement' ? 'active' : ''}`}
+                    onClick={() => setActiveEmpSubTab('settlement')}
+                    style={{ color: '#059669', fontWeight: 800, backgroundColor: activeEmpSubTab === 'settlement' ? '#ecfdf5' : 'transparent', border: '1px solid #10b981' }}
+                  >
+                    <Scale size={18} />
+                    ⚖️ جدول المخالصة النهائية والردود
+                  </button>
+
+                  <button 
                     className={`tab-btn ${activeEmpSubTab === 'report' ? 'active' : ''}`}
                     onClick={() => setActiveEmpSubTab('report')}
                     style={{ marginRight: 'auto', color: 'var(--primary-700)', fontWeight: 800 }}
@@ -200,6 +210,7 @@ export default function App() {
                 {activeEmpSubTab === 'bonuses' && <BonusesTab employeeId={selectedEmployee.id} />}
                 {activeEmpSubTab === 'other' && <OtherPaymentsTab employeeId={selectedEmployee.id} />}
                 {activeEmpSubTab === 'leaves' && <LeavesTab employeeId={selectedEmployee.id} />}
+                {activeEmpSubTab === 'settlement' && <FinalSettlementTab employee={selectedEmployee} />}
                 {activeEmpSubTab === 'report' && <DetailedReportTab employee={selectedEmployee} />}
               </div>
             ) : null}
