@@ -967,7 +967,7 @@ export default function SalariesTab({ employee }) {
                       );
                     }
 
-                    const box = activeAtt.highlightBox;
+                    const box = activeAtt.highlightBox || employee?.defaultHighlightBox;
                     return (
                       <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                         {activeAtt.fileType.startsWith('image/') ? (
@@ -1166,12 +1166,13 @@ export default function SalariesTab({ employee }) {
           }}
         />
       )}
-      {/* Fullscreen Viewer Modal with Spotlight Highlight Frame Tool */}
+      {/* FullscreenViewerModal with Spotlight Highlight Frame Tool */}
       {fullscreenAttachment && (
         <FullscreenViewerModal
           attachment={fullscreenAttachment}
           onClose={() => setFullscreenAttachment(null)}
           onSaveHighlight={(updated) => setPreviewAttachment(updated)}
+          employeeDefaultHighlightBox={employee?.defaultHighlightBox}
         />
       )}
     </div>

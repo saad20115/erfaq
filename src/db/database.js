@@ -304,6 +304,7 @@ export async function createOrGetHaniEmployee() {
       startDate: '2020-01',
       endDate: '2025-01',
       defaultSalary: 15000,
+      defaultHighlightBox: { active: true, y: 68, height: 25, width: 96, x: 2 },
       notes: '',
       createdAt: new Date().toISOString()
     });

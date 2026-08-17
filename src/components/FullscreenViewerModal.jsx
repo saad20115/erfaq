@@ -3,16 +3,16 @@ import {
   X, Download, ZoomIn, ZoomOut, RotateCcw, 
   Square, Eye, Check
 } from 'lucide-react';
-import { db } from '../db/database';
+import { db, pushToServer } from '../db/database';
 
-export default function FullscreenViewerModal({ attachment, onClose, onSaveHighlight }) {
+export default function FullscreenViewerModal({ attachment, onClose, onSaveHighlight, employeeDefaultHighlightBox }) {
   if (!attachment) return null;
 
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [saveSuccessMsg, setSaveSuccessMsg] = useState(false);
-  const [isHighlightActive, setIsHighlightActive] = useState(attachment.highlightBox?.active ?? true);
-  const [highlightBox, setHighlightBox] = useState(attachment.highlightBox || {
+  const [isHighlightActive, setIsHighlightActive] = useState((attachment.highlightBox || employeeDefaultHighlightBox)?.active ?? true);
+  const [highlightBox, setHighlightBox] = useState(attachment.highlightBox || employeeDefaultHighlightBox || {
     y: 70, // percentage from top (default to bottom section e.g. SAIB statement row)
     height: 18, // percentage height
     width: 96,
@@ -28,6 +28,9 @@ export default function FullscreenViewerModal({ attachment, onClose, onSaveHighl
   const handleSaveHighlight = async () => {
     const updatedBox = { ...highlightBox, active: isHighlightActive };
     await db.attachments.update(attachment.id, { highlightBox: updatedBox });
+    if (attachment.employeeId) {
+      await db.employees.update(attachment.employeeId, { defaultHighlightBox: updatedBox });
+    }
     await pushToServer();
     if (onSaveHighlight) {
       onSaveHighlight({ ...attachment, highlightBox: updatedBox });
