@@ -22,6 +22,24 @@ export default function FinalSettlementTab({ employee }) {
   const totalBonusesSum = salaries.reduce((acc, s) => acc + (Number(s.bonusesOrOvertime) || 0), 0);
   const formattedBonusTotal = (totalBonusesSum > 0 ? totalBonusesSum : 5000).toLocaleString('ar-SA');
 
+  const sumGrossTotal = salaries.reduce((acc, s) => {
+    const basic = s.basicSalary !== undefined ? Number(s.basicSalary) : 15000;
+    const car = s.carAllowance !== undefined ? Number(s.carAllowance) : 1500;
+    const phone = s.phoneAllowance !== undefined ? Number(s.phoneAllowance) : 375;
+    return acc + (basic + car + phone);
+  }, 0);
+
+  const sumBonuses = salaries.reduce((acc, s) => acc + (Number(s.bonusesOrOvertime) || 0), 0);
+
+  const sumNetReceived = salaries.reduce((acc, s) => {
+    const basic = s.basicSalary !== undefined ? Number(s.basicSalary) : 15000;
+    const car = s.carAllowance !== undefined ? Number(s.carAllowance) : 1500;
+    const phone = s.phoneAllowance !== undefined ? Number(s.phoneAllowance) : 375;
+    const bonus = Number(s.bonusesOrOvertime) || 0;
+    const ded = (car === 0 && phone === 0) ? 0 : (Number(s.deductions) || 0);
+    return acc + (basic + car + phone + bonus - ded);
+  }, 0);
+
   if (!employee) return null;
 
   return (
@@ -369,6 +387,25 @@ export default function FinalSettlementTab({ employee }) {
               );
             })}
           </tbody>
+          <tfoot>
+            <tr style={{ backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, borderTop: '3px solid #3b82f6', fontSize: '0.9rem' }}>
+              <td colSpan={2} style={{ textAlign: 'center', padding: '0.66rem 0.4rem' }}>
+                📊 الإجمالي الكلي ({salaries.length} شهراً)
+              </td>
+              <td style={{ textAlign: 'center', color: '#93c5fd', backgroundColor: '#1e3a8a' }}>
+                {sumGrossTotal.toLocaleString('ar-SA')} ﷼
+              </td>
+              <td style={{ textAlign: 'center', color: '#fde047', backgroundColor: '#78350f' }}>
+                {sumBonuses.toLocaleString('ar-SA')} ﷼
+              </td>
+              <td style={{ textAlign: 'center', color: '#6ee7b7', backgroundColor: '#065f46' }}>
+                {sumNetReceived.toLocaleString('ar-SA')} ﷼
+              </td>
+              <td style={{ textAlign: 'right', fontSize: '0.78rem', color: '#cbd5e1', padding: '0.66rem 0.4rem' }}>
+                إجمالي مسيرات الرواتب والإضافي المصروفة
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
