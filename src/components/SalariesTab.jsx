@@ -454,12 +454,20 @@ export default function SalariesTab({ employee }) {
   const totalAttached = salaries.filter(s => s.status === 'attached').length;
   const totalMissing = salaries.filter(s => s.status === 'missing').length;
   const totalNA = salaries.filter(s => s.status === 'na').length;
-  const totalNetSum = salaries.reduce((acc, s) => acc + (Number(s.netSalary) || 16875), 0);
+  const totalBonusesOvertimeSum = salaries.reduce((acc, s) => acc + (Number(s.bonusesOrOvertime) || 0), 0);
+  const totalNetSum = salaries.reduce((acc, s) => {
+    const basic = Number(s.basicSalary) !== undefined ? Number(s.basicSalary) : 15000;
+    const car = s.carAllowance !== undefined ? Number(s.carAllowance) : 1500;
+    const phone = s.phoneAllowance !== undefined ? Number(s.phoneAllowance) : 375;
+    const bonus = Number(s.bonusesOrOvertime) || 0;
+    const ded = (car === 0 && phone === 0) ? 0 : (Number(s.deductions) || 0);
+    return acc + (basic + car + phone + bonus - ded);
+  }, 0);
 
   return (
     <div>
       {/* Top Summary KPI Cards */}
-      <div className="grid-4" style={{ marginBottom: '1.25rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
         <div className="stat-card" style={{ borderColor: '#e2e8f0' }}>
           <div className="stat-icon" style={{ background: 'var(--primary-50)', color: 'var(--primary-600)' }}>
             <Calendar size={24} />
@@ -490,13 +498,23 @@ export default function SalariesTab({ employee }) {
           </div>
         </div>
 
-        <div className="stat-card" style={{ borderColor: '#e2e8f0' }}>
-          <div className="stat-icon" style={{ background: '#f1f5f9', color: '#64748b' }}>
+        <div className="stat-card" style={{ borderColor: '#fde68a' }}>
+          <div className="stat-icon" style={{ background: '#fef3c7', color: '#d97706' }}>
+            <Sparkles size={24} />
+          </div>
+          <div className="stat-info">
+            <div className="stat-value" style={{ color: '#b45309' }}>{totalBonusesOvertimeSum.toLocaleString('ar-SA')} ﷼</div>
+            <div className="stat-label">إجمالي الإضافي والمكافآت 🎁</div>
+          </div>
+        </div>
+
+        <div className="stat-card" style={{ borderColor: '#bfdbfe' }}>
+          <div className="stat-icon" style={{ background: '#eff6ff', color: 'var(--primary-700)' }}>
             <DollarSign size={24} />
           </div>
           <div className="stat-info">
-            <div className="stat-value">{totalNetSum.toLocaleString('ar-SA')} ﷼</div>
-            <div className="stat-label">إجمالي الصافي المصروف</div>
+            <div className="stat-value" style={{ color: 'var(--primary-900)' }}>{totalNetSum.toLocaleString('ar-SA')} ﷼</div>
+            <div className="stat-label">إجمالي الصافي المستحق 💵</div>
           </div>
         </div>
       </div>
