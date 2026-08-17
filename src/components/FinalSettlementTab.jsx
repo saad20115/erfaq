@@ -96,7 +96,7 @@ export default function FinalSettlementTab({ employee }) {
               <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '20%' }}>بند التسوية / المستحقات</th>
               <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#065f46', width: '22%' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
               <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#991b1b', width: '22%' }}>حساب طلب الموظف</th>
-              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '36%' }}>الرأي والملاحظات المحاسبية والرأي الرقابي</th>
+              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '36%' }}>ملاحظات</th>
             </tr>
           </thead>
           <tbody>

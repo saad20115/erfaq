@@ -298,7 +298,7 @@ export default function DetailedReportTab({ employee }) {
               <th style={{ padding: '0.6rem', textAlign: 'right' }}>البند / البيان</th>
               <th style={{ padding: '0.6rem', textAlign: 'center', backgroundColor: '#065f46' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
               <th style={{ padding: '0.6rem', textAlign: 'center', backgroundColor: '#991b1b' }}>حساب ادعاءات الموظف</th>
-              <th style={{ padding: '0.6rem', textAlign: 'right' }}>الرأي والملاحظات الرقابية / القانونية</th>
+              <th style={{ padding: '0.6rem', textAlign: 'right' }}>ملاحظات</th>
             </tr>
           </thead>
           <tbody>
