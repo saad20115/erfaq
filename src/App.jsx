@@ -30,28 +30,39 @@ export default function App() {
   const [isNewEmpModalOpen, setIsNewEmpModalOpen] = useState(false);
   const [isBackupModalOpen, setIsBackupModalOpen] = useState(false);
   const [empStats, setEmpStats] = useState(null);
+  const [isInitializing, setIsInitializing] = useState(true);
 
   // Fetch employees reactively
   const employees = useLiveQuery(() => db.employees.toArray()) || [];
 
-  // Seed demo data and guarantee Hani Mustafa is loaded
+  // Seed demo data and guarantee Hani Mustafa is loaded automatically
   useEffect(() => {
     async function initData() {
-      await seedDemoDataIfEmpty();
-      const haniId = await createOrGetHaniEmployee();
-      if (haniId) {
-        setSelectedEmpId(haniId);
+      try {
+        await seedDemoDataIfEmpty();
+        const haniId = await createOrGetHaniEmployee();
+        if (haniId) {
+          setSelectedEmpId(haniId);
+        }
+      } catch (err) {
+        console.warn('Initialization error:', err);
+      } finally {
+        setIsInitializing(false);
       }
     }
     initData();
   }, []);
 
-  // Select first employee automatically if none selected
+  // Select first employee automatically if none selected or if empty
   useEffect(() => {
-    if (employees.length > 0 && (!selectedEmpId || !employees.some(e => e.id === selectedEmpId))) {
+    if (!isInitializing && employees.length === 0) {
+      createOrGetHaniEmployee().then((haniId) => {
+        if (haniId) setSelectedEmpId(haniId);
+      });
+    } else if (employees.length > 0 && (!selectedEmpId || !employees.some(e => e.id === selectedEmpId))) {
       setSelectedEmpId(employees[0].id);
     }
-  }, [employees, selectedEmpId]);
+  }, [employees, selectedEmpId, isInitializing]);
 
   const selectedEmployee = employees.find(e => e.id === selectedEmpId);
 
@@ -86,24 +97,11 @@ export default function App() {
           <AggregateDashboardTab onSelectEmployee={handleSelectEmployee} />
         ) : (
           <div>
-            {/* If no employee exists */}
-            {employees.length === 0 ? (
+            {/* If initializing or no employee exists */}
+            {isInitializing || employees.length === 0 ? (
               <div className="card" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
-                <AlertCircle size={48} color="var(--primary-600)" style={{ marginBottom: '1rem', opacity: 0.8 }} />
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>
-                  مرحباً بك في نظام تتبع مرفقات الموظفين
-                </h2>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem auto' }}>
-                  لم يتم إضافة أي موظفين بعد. يمكنك إضافة موظف جديد لبدء تتبع العقود والرواتب من 2020 إلى 2025، أو تحميل بيانات عينة تجريبية فوراً.
-                </p>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                  <button className="btn btn-primary" onClick={() => setIsNewEmpModalOpen(true)}>
-                    <Plus size={18} /> إضافة موظف جديد
-                  </button>
-                  <button className="btn btn-secondary" onClick={() => seedDemoDataIfEmpty().then(() => window.location.reload())}>
-                    تحميل بيانات تجريبية 🚀
-                  </button>
-                </div>
+                <div style={{ display: 'inline-block', width: '32px', height: '32px', border: '3px solid #cbd5e1', borderTopColor: '#2563eb', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '1rem' }} />
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>جاري تجهيز قاعدة البيانات المحلية وتوليد ملف المهندس هاني...</h3>
               </div>
             ) : selectedEmployee ? (
               <div>
