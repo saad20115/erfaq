@@ -43,42 +43,42 @@ export default function FinalSettlementTab({ employee }) {
       </div>
 
       {/* Summary Highlight Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
         {/* Company Approved Net Card */}
-        <div style={{ background: '#ecfdf5', border: '2px solid #10b981', borderRadius: 'var(--radius-lg)', padding: '1.25rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#065f46', marginBottom: '0.35rem' }}>
+        <div style={{ background: '#ecfdf5', border: '1.5px solid #10b981', borderRadius: 'var(--radius-md)', padding: '0.75rem 0.5rem', textAlign: 'center' }}>
+          <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#065f46', marginBottom: '0.2rem' }}>
             ✅ صافي المستحق النهائي المعتمد (الشركة)
           </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#047857' }}>
+          <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#047857' }}>
             90,810 ﷼
           </div>
-          <div style={{ fontSize: '0.75rem', color: '#065f46', marginTop: '0.35rem' }}>
+          <div style={{ fontSize: '0.7rem', color: '#065f46', marginTop: '0.2rem' }}>
             شاملاً نهاية الخدمة والإجازات والعمل عن بعد بعد الخصم
           </div>
         </div>
 
         {/* Employee Claim Net Card */}
-        <div style={{ background: '#fef2f2', border: '2px solid #ef4444', borderRadius: 'var(--radius-lg)', padding: '1.25rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#991b1b', marginBottom: '0.35rem' }}>
+        <div style={{ background: '#fef2f2', border: '1.5px solid #ef4444', borderRadius: 'var(--radius-md)', padding: '0.75rem 0.5rem', textAlign: 'center' }}>
+          <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#991b1b', marginBottom: '0.2rem' }}>
             ❌ صافي المستحق المطالَب به (الموظف)
           </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#b91c1c' }}>
+          <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#b91c1c' }}>
             646,315.21 ﷼
           </div>
-          <div style={{ fontSize: '0.75rem', color: '#991b1b', marginTop: '0.35rem' }}>
+          <div style={{ fontSize: '0.7rem', color: '#991b1b', marginTop: '0.2rem' }}>
             مبلغ مبالغ فيه (محتسب براتب 21,875 ومطالبات غير مثبتة)
           </div>
         </div>
 
         {/* Difference Variance Card */}
-        <div style={{ background: '#fffbe8', border: '2px solid #f59e0b', borderRadius: 'var(--radius-lg)', padding: '1.25rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#92400e', marginBottom: '0.35rem' }}>
+        <div style={{ background: '#fffbe8', border: '1.5px solid #f59e0b', borderRadius: 'var(--radius-md)', padding: '0.75rem 0.5rem', textAlign: 'center' }}>
+          <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#92400e', marginBottom: '0.2rem' }}>
             ⚠️ فارق التجاوز والمطالبة المرفوضة
           </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#b45309' }}>
+          <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#b45309' }}>
             555,505.21 ﷼
           </div>
-          <div style={{ fontSize: '0.75rem', color: '#92400e', marginTop: '0.35rem' }}>
+          <div style={{ fontSize: '0.7rem', color: '#92400e', marginTop: '0.2rem' }}>
             فارق غير مثبت قانونياً ومرفوض بالكامل
           </div>
         </div>

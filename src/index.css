@@ -458,11 +458,11 @@ body {
   font-weight: 600;
 }
 
-/* Print Stylesheet for Reports - Clean 2-Page A4 Landscape & Zero Overlaps */
+/* Print Stylesheet for Reports - Clean 2-Page A4 Landscape & Zero Domain Header */
 @media print {
   @page {
     size: A4 landscape !important;
-    margin: 5mm 8mm !important;
+    margin: 0 !important; /* Zero margin strips browser domain URL, date, and title automatically! */
   }
   * {
     -webkit-print-color-adjust: exact !important;
@@ -472,11 +472,11 @@ body {
   body, html {
     background-color: #ffffff !important;
     color: #0f172a !important;
-    font-size: 9.5pt !important;
+    font-size: 8pt !important;
     width: 100% !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 6mm 10mm !important;
     overflow: visible !important;
   }
   .app-header, .tabs-header, .no-print, button, .btn, .modal-overlay, .employee-profile-form {
@@ -498,32 +498,32 @@ body {
     page-break-before: always !important;
     break-before: page !important;
     margin-top: 0 !important;
-    padding-top: 1rem !important;
+    padding-top: 0.5rem !important;
   }
   .print-landscape-table, .custom-table {
     width: 100% !important;
     max-width: 100% !important;
     table-layout: fixed !important;
     border-collapse: collapse !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
   }
   .print-landscape-table th, 
   .print-landscape-table td,
   .custom-table th,
   .custom-table td {
-    padding: 4px 6px !important;
+    padding: 3px 5px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
-    font-size: 8.5pt !important;
-    line-height: 1.25 !important;
+    font-size: 7.8pt !important;
+    line-height: 1.2 !important;
   }
   .print-landscape-table tr, .custom-table tr {
     page-break-inside: avoid !important;
   }
   .status-badge {
     border: 1px solid #94a3b8 !important;
-    padding: 0.1rem 0.35rem !important;
-    font-size: 8pt !important;
+    padding: 0.05rem 0.3rem !important;
+    font-size: 7.5pt !important;
   }
 }
