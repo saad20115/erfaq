@@ -71,10 +71,10 @@ export default function FinalSettlementDraftTab({ employee }) {
             ✅ صافي المستحق النهائي المعتمد (النسخة المعدلة)
           </div>
           <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#047857' }}>
-            78,897.50 ﷼
+            81,497.50 ﷼
           </div>
           <div style={{ fontSize: '0.7rem', color: '#065f46', marginTop: '0.2rem' }}>
-            نهاية الخدمة بـ 50,462.50 ﷼ + الإجازات والعمل عن بعد بعد الخصم
+            نهاية الخدمة بـ 50,462.50 ﷼ + الإجازات (550 ﷼/يوم) والعمل عن بعد بعد الخصم
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function FinalSettlementDraftTab({ employee }) {
             ⚠️ فارق التجاوز والمطالبة المرفوضة
           </div>
           <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#b45309' }}>
-            567,417.71 ﷼
+            564,817.71 ﷼
           </div>
           <div style={{ fontSize: '0.7rem', color: '#92400e', marginTop: '0.2rem' }}>
             فارق غير مثبت قانونياً ومرفوض بالكامل
@@ -151,9 +151,9 @@ export default function FinalSettlementDraftTab({ employee }) {
                 مستحقات رصيد الإجازات 🏖️
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>
-                26,000 ﷼
+                28,600 ﷼
                 <div style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 500 }}>
-                  (52 يوماً × أجر اليوم 500 ﷼)
+                  (52 يوماً × أجر اليوم 550 ﷼ براتب 16,500 ﷼)
                 </div>
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
@@ -163,7 +163,7 @@ export default function FinalSettlementDraftTab({ employee }) {
                 </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
-                <strong>غير صحيح:</strong> مطالبة الموظف بـ 74 يوماً لا تتوافق مع سجلات الخروج والعودة الفعلية بالجوازات. الرصيد المتبقي المستحق بالمخالصة هو <strong>52 يوماً فقط</strong> بقيمة 26,000 ﷼.
+                <strong>غير صحيح:</strong> مطالبتهم بـ 74 يوماً لا تتوافق مع برنت الجوازات. الرصيد المتبقي المستحق بالمخالصة هو <strong>52 يوماً بواقع 550 ﷼/يوم</strong> بقيمة <strong>28,600 ﷼</strong>.
               </td>
             </tr>
 
@@ -211,13 +211,13 @@ export default function FinalSettlementDraftTab({ employee }) {
                 إجمالي المستحقات قبل سداد الحوالات والخصومات 📊
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#065f46', fontSize: '1.05rem' }}>
-                94,712.50 ﷼
+                97,312.50 ﷼
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#991b1b', fontSize: '1.05rem' }}>
                 646,315.21 ﷼
               </td>
               <td style={{ fontSize: '0.85rem', color: '#334155' }}>
-                مجموع بنود المستحقات الأساسية (50,462.50 ﷼ نهاية خدمة + 26,000 ﷼ إجازات + 18,250 ﷼ رواتب).
+                مجموع بنود المستحقات الأساسية (50,462.50 ﷼ نهاية خدمة + 28,600 ﷼ إجازات + 18,250 ﷼ رواتب).
               </td>
             </tr>
 
@@ -247,13 +247,13 @@ export default function FinalSettlementDraftTab({ employee }) {
                 🎯 صافي المبلغ النهائي المستحق صرفه بالمخالصة
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#047857', fontSize: '1.25rem', backgroundColor: '#d1fae5' }}>
-                78,897.50 ﷼
+                81,497.50 ﷼
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#b91c1c', fontSize: '1.25rem', backgroundColor: '#fee2e2' }}>
                 646,315.21 ﷼
               </td>
               <td style={{ color: '#065f46', fontSize: '0.9rem' }}>
-                الصافي النهائي المعتمد بالمخالصة في هذه النسخة هو <strong>78,897.50 ﷼</strong>.
+                الصافي النهائي المعتمد بالمخالصة في هذه النسخة هو <strong>81,497.50 ﷼</strong>.
               </td>
             </tr>
           </tbody>
