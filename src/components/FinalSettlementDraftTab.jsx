@@ -159,7 +159,7 @@ export default function FinalSettlementDraftTab({ employee }) {
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
                 54,055 ﷼
                 <div style={{ fontSize: '0.75rem', color: '#b91c1c', fontWeight: 500 }}>
-                  (يطالب بـ 74 يوماً براتب 21,875 ﷼)
+                  (يطالب بـ 74 يوماً تقريباً)
                 </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
@@ -178,10 +178,7 @@ export default function FinalSettlementDraftTab({ employee }) {
                 </div>
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
-                143,000 ﷼
-                <div style={{ fontSize: '0.75rem', color: '#b91c1c', fontWeight: 500 }}>
-                  (يطالب بأجور أشهر كاملة بدون إثبات)
-                </div>
+                -
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
                 تم سداد راتب يناير 2025 بحوالات البنك السعودي للاستثمار. تم احتساب مبلغ 1,375 ﷼ إضافي عن فترة العمل عن بعد المعتمدة.
@@ -199,7 +196,10 @@ export default function FinalSettlementDraftTab({ employee }) {
                 </div>
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
-                36,000 ﷼
+                194,820 ﷼
+                <div style={{ fontSize: '0.75rem', color: '#b91c1c', fontWeight: 500 }}>
+                  (155,820 ﷼ ساعات إضافية + 39,000 ﷼ مكافأة تميز)
+                </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
                 إجمالي المكافآت والإضافي الموثق المصروف للموظف في النظام هو ({formattedBonusTotal} ﷼) ولا توجد أي ساعات إضافية غير مسددة.
