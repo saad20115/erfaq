@@ -524,6 +524,33 @@ body {
     font-size: 8pt !important;
     line-height: 1.2 !important;
   }
+  .print-landscape-table th, .custom-table th {
+    font-weight: 900 !important;
+    font-size: 8.5pt !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .header-company-approved {
+    background-color: #064e3b !important; /* Deep Rich Emerald Green for max contrast */
+    color: #ffffff !important;
+  }
+  .header-employee-claim {
+    background-color: #7f1d1d !important; /* Deep Rich Crimson Red for max contrast */
+    color: #ffffff !important;
+  }
+  .header-gross-total {
+    background-color: #1e3a8a !important; /* Deep Rich Navy Blue */
+    color: #ffffff !important;
+  }
+  .header-bonus-total {
+    background-color: #78350f !important; /* Deep Rich Warm Amber */
+    color: #ffffff !important;
+  }
+  .header-net-total {
+    background-color: #064e3b !important; /* Deep Rich Emerald Green */
+    color: #ffffff !important;
+  }
   .print-landscape-table tr, .custom-table tr {
     page-break-inside: avoid !important;
   }

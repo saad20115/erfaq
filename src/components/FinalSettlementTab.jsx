@@ -113,8 +113,12 @@ export default function FinalSettlementTab({ employee }) {
           <thead>
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
               <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '20%' }}>بند التسوية / المستحقات</th>
-              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#065f46', width: '22%' }}>حساب المخالصة النهائية للشركة (المعتمد)</th>
-              <th style={{ padding: '0.6rem 0.4rem', textAlign: 'center', backgroundColor: '#991b1b', width: '22%' }}>حساب طلب الموظف</th>
+              <th className="header-company-approved" style={{ padding: '0.65rem 0.4rem', textAlign: 'center', backgroundColor: '#064e3b', color: '#ffffff', width: '22%', fontWeight: 900 }}>
+                حساب المخالصة النهائية للشركة (المعتمد)
+              </th>
+              <th className="header-employee-claim" style={{ padding: '0.65rem 0.4rem', textAlign: 'center', backgroundColor: '#7f1d1d', color: '#ffffff', width: '22%', fontWeight: 900 }}>
+                حساب طلب الموظف
+              </th>
               <th style={{ padding: '0.6rem 0.4rem', textAlign: 'right', width: '36%' }}>ملاحظات</th>
             </tr>
           </thead>
@@ -349,12 +353,12 @@ export default function FinalSettlementTab({ employee }) {
         <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
-              <th style={{ width: '5%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>#</th>
-              <th style={{ width: '15%', textAlign: 'center', padding: '0.5rem 0.2rem' }}>الشهر / السنة</th>
-              <th style={{ width: '20%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#1e3a8a' }}>إجمالي الراتب والبدلات 📊</th>
-              <th style={{ width: '18%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#78350f' }}>إجمالي الإضافي 🎁</th>
-              <th style={{ width: '20%', textAlign: 'center', padding: '0.5rem 0.2rem', backgroundColor: '#065f46' }}>إجمالي المستلم 💵</th>
-              <th style={{ width: '22%', textAlign: 'right', padding: '0.5rem 0.4rem' }}>الملاحظات 📝</th>
+              <th style={{ width: '5%', textAlign: 'center', padding: '0.55rem 0.2rem', color: '#ffffff', fontWeight: 900 }}>#</th>
+              <th style={{ width: '15%', textAlign: 'center', padding: '0.55rem 0.2rem', color: '#ffffff', fontWeight: 900 }}>الشهر / السنة</th>
+              <th className="header-gross-total" style={{ width: '20%', textAlign: 'center', padding: '0.55rem 0.2rem', backgroundColor: '#1e3a8a', color: '#ffffff', fontWeight: 900 }}>إجمالي الراتب والبدلات 📊</th>
+              <th className="header-bonus-total" style={{ width: '18%', textAlign: 'center', padding: '0.55rem 0.2rem', backgroundColor: '#78350f', color: '#ffffff', fontWeight: 900 }}>إجمالي الإضافي 🎁</th>
+              <th className="header-net-total" style={{ width: '20%', textAlign: 'center', padding: '0.55rem 0.2rem', backgroundColor: '#064e3b', color: '#ffffff', fontWeight: 900 }}>إجمالي المستلم 💵</th>
+              <th style={{ width: '22%', textAlign: 'right', padding: '0.55rem 0.4rem', color: '#ffffff', fontWeight: 900 }}>الملاحظات 📝</th>
             </tr>
           </thead>
           <tbody>
