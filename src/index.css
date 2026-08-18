@@ -462,7 +462,7 @@ body {
 @media print {
   @page {
     size: A4 landscape !important;
-    margin: 0 !important; /* Zero margin strips browser domain URL, date, and title automatically! */
+    margin: 6mm 8mm 6mm 8mm !important; /* Safety margins for 0 clipping and 0 browser URL headers */
   }
   * {
     -webkit-print-color-adjust: exact !important;
@@ -476,7 +476,7 @@ body {
     width: 100% !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 6mm 10mm !important;
+    padding: 2mm 6mm !important;
     overflow: visible !important;
   }
   .app-header, .tabs-header, .no-print, button, .btn, .modal-overlay, .employee-profile-form {
@@ -498,7 +498,7 @@ body {
     page-break-before: always !important;
     break-before: page !important;
     margin-top: 0 !important;
-    padding-top: 0.5rem !important;
+    padding-top: 10mm !important; /* Generous top safety padding for Page 2, Page 3 & Page 4 to prevent any title clipping! */
   }
   .print-landscape-table, .custom-table {
     width: 100% !important;
