@@ -14,12 +14,13 @@ import DetailedReportTab from './components/DetailedReportTab';
 import AggregateDashboardTab from './components/AggregateDashboardTab';
 import BackupRestoreModal from './components/BackupRestoreModal';
 import FinalSettlementTab from './components/FinalSettlementTab';
+import FinalSettlementDraftTab from './components/FinalSettlementDraftTab';
 
 // Lucide Icons
 import { 
   Calendar, FileText, Award, DollarSign, 
   UserCheck, ShieldCheck, CheckCircle2, XCircle, 
-  MinusCircle, Plus, Users, Layers, AlertCircle, Scale
+  MinusCircle, Plus, Users, Layers, AlertCircle, Scale, Edit3
 } from 'lucide-react';
 
 export default function App() {
@@ -197,7 +198,16 @@ export default function App() {
                     style={{ color: '#059669', fontWeight: 800, backgroundColor: activeEmpSubTab === 'settlement' ? '#ecfdf5' : 'transparent', border: '1px solid #10b981' }}
                   >
                     <Scale size={18} />
-                    ⚖️ جدول المخالصة النهائية والردود
+                    ⚖️ جدول المخالصة (المعتمد)
+                  </button>
+
+                  <button 
+                    className={`tab-btn ${activeEmpSubTab === 'settlement_draft' ? 'active' : ''}`}
+                    onClick={() => setActiveEmpSubTab('settlement_draft')}
+                    style={{ color: '#7c3aed', fontWeight: 800, backgroundColor: activeEmpSubTab === 'settlement_draft' ? '#f5f3ff' : 'transparent', border: '1px solid #8b5cf6' }}
+                  >
+                    <Edit3 size={18} />
+                    📝 جدول المخالصة (نسخة إضافية)
                   </button>
 
                   <button 
@@ -217,6 +227,7 @@ export default function App() {
                 {activeEmpSubTab === 'other' && <OtherPaymentsTab employeeId={selectedEmployee.id} />}
                 {activeEmpSubTab === 'leaves' && <LeavesTab employeeId={selectedEmployee.id} />}
                 {activeEmpSubTab === 'settlement' && <FinalSettlementTab employee={selectedEmployee} />}
+                {activeEmpSubTab === 'settlement_draft' && <FinalSettlementDraftTab employee={selectedEmployee} />}
                 {activeEmpSubTab === 'report' && <DetailedReportTab employee={selectedEmployee} />}
               </div>
             ) : null}
