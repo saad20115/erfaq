@@ -244,12 +244,12 @@ export default function FinalSettlementTab({ employee }) {
         <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <thead>
             <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
-              <th style={{ width: '5%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>#</th>
-              <th style={{ width: '20%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>يوم وتاريخ الذهاب</th>
-              <th style={{ width: '20%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>يوم وتاريخ العودة</th>
-              <th style={{ width: '15%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>الفرق بالأيام (الليالي)</th>
-              <th style={{ width: '18%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>إجمالي الأيام (شاملاً اليومين)</th>
-              <th style={{ width: '22%', textAlign: 'center', color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>الحالة وسداد الراتب</th>
+              <th style={{ width: '5%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>#</th>
+              <th style={{ width: '20%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>يوم وتاريخ الذهاب</th>
+              <th style={{ width: '20%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>يوم وتاريخ العودة</th>
+              <th style={{ width: '15%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>الفرق بالأيام (الليالي)</th>
+              <th style={{ width: '18%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>إجمالي الأيام (شاملاً اليومين)</th>
+              <th style={{ width: '22%', textAlign: 'center', backgroundColor: '#0f172a', color: '#ffffff', fontWeight: 900, padding: '0.65rem 0.2rem' }}>الحالة وسداد الراتب</th>
             </tr>
           </thead>
           <tbody>

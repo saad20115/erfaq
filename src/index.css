@@ -462,7 +462,7 @@ body {
 @media print {
   @page {
     size: A4 landscape !important;
-    margin: 6mm 8mm 6mm 8mm !important; /* Safety margins for 0 clipping and 0 browser URL headers */
+    margin: 0 !important; /* Zero margin strips browser domain URL, date, and title 100% automatically! */
   }
   * {
     -webkit-print-color-adjust: exact !important;
@@ -476,7 +476,7 @@ body {
     width: 100% !important;
     height: auto !important;
     margin: 0 !important;
-    padding: 2mm 6mm !important;
+    padding: 12mm 10mm 10mm 10mm !important;
     overflow: visible !important;
   }
   .app-header, .tabs-header, .no-print, button, .btn, .modal-overlay, .employee-profile-form {
@@ -498,7 +498,7 @@ body {
     page-break-before: always !important;
     break-before: page !important;
     margin-top: 0 !important;
-    padding-top: 10mm !important; /* Generous top safety padding for Page 2, Page 3 & Page 4 to prevent any title clipping! */
+    padding-top: 16mm !important; /* Safety top padding on page breaks to prevent title clipping */
   }
   .print-landscape-table, .custom-table {
     width: 100% !important;
@@ -509,6 +509,8 @@ body {
   }
   .print-landscape-table thead, .custom-table thead {
     display: table-header-group !important; /* Repeat column header at the top of every page */
+    background-color: #0f172a !important;
+    color: #ffffff !important;
   }
   .print-landscape-table tbody, .custom-table tbody {
     display: table-row-group !important;
@@ -517,17 +519,19 @@ body {
   .print-landscape-table td,
   .custom-table th,
   .custom-table td {
-    padding: 3.5px 5px !important;
+    padding: 4px 6px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
     font-size: 8pt !important;
-    line-height: 1.2 !important;
+    line-height: 1.25 !important;
   }
   .print-landscape-table th, .custom-table th {
     font-weight: 900 !important;
     font-size: 8.5pt !important;
+    background-color: #0f172a !important;
     color: #ffffff !important;
+    border: 1px solid #0f172a !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
