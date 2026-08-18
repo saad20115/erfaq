@@ -132,7 +132,7 @@ export default function FinalSettlementDraftTab({ employee }) {
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>
                 50,462.50 ﷼
                 <div style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 500 }}>
-                  من 2022-01-01 إلى 2025-01-22 براتب 16,500 ﷼ <br/>(بعد سداد وتصفية الفترات السابقة بـ 211,250 ﷼)
+                  من 2022-01-01 إلى 2025-01-22 براتب 16,500 ﷼
                 </div>
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
@@ -142,7 +142,7 @@ export default function FinalSettlementDraftTab({ employee }) {
                 </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
-                <strong>غير صحيح:</strong> احتسبت نهاية الخدمة للفترة الجديدة من <strong>01-01-2022 حتى 22-01-2025</strong> على أساس راتب <strong>16,500 ﷼</strong> لتبلغ مكافأة نهاية الخدمة المعتمدة <strong>50,462.50 ﷼</strong>. (مع إقرار الموظف باستلام 211,250 ﷼ عن الفترة من 01-06-2004 إلى 31-01-2020).
+                <strong>غير صحيح:</strong> احتسبت نهاية الخدمة للفترة الجديدة من <strong>01-01-2022 حتى 22-01-2025</strong> على أساس راتب <strong>16,500 ﷼</strong> لتبلغ مكافأة نهاية الخدمة المعتمدة <strong>50,462.50 ﷼</strong>.
               </td>
             </tr>
 
