@@ -248,13 +248,13 @@ export default function DetailedReportTab({ employee }) {
         </h3>
         <table className="custom-table" style={{ marginBottom: '1rem' }}>
           <thead>
-            <tr>
-              <th>#</th>
-              <th>يوم وتاريخ الذهاب</th>
-              <th>يوم وتاريخ العودة</th>
-              <th>الفرق بالأيام (الليالي)</th>
-              <th>إجمالي الأيام (شاملاً اليومين)</th>
-              <th>الحالة وسداد الراتب</th>
+            <tr style={{ backgroundColor: '#0f172a', color: '#ffffff' }}>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>#</th>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>يوم وتاريخ الذهاب</th>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>يوم وتاريخ العودة</th>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>الفرق بالأيام (الليالي)</th>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>إجمالي الأيام (شاملاً اليومين)</th>
+              <th style={{ color: '#ffffff', fontWeight: 900, padding: '0.6rem 0.2rem' }}>الحالة وسداد الراتب</th>
             </tr>
           </thead>
           <tbody>
