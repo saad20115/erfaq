@@ -17,21 +17,17 @@ db.version(1).stores({
 // Central Server Sync
 export async function syncWithServer() {
   try {
-    const localAtts = await db.attachments.toArray();
-    const localWithHighlight = localAtts.filter(a => a.highlightBox && a.highlightBox.active);
-
     const res = await fetch('/api/db');
     if (res.ok) {
       const serverData = await res.json();
+      const serverEmployees = serverData.employees || [];
       const serverAtts = serverData.attachments || [];
 
-      // If local storage has attachments with saved highlights and server has fewer, PUSH local to server!
-      if (localAtts.length > 0 && (serverAtts.length === 0 || localWithHighlight.length > 0)) {
-        await pushToServer();
-        return true;
-      }
+      const localEmployees = await db.employees.toArray();
+      const localAtts = await db.attachments.toArray();
 
-      if (serverData && serverData.employees && serverData.employees.length > 0) {
+      // If server has richer data (more attachments or employees), populate local IndexedDB from MySQL server!
+      if (serverAtts.length >= localAtts.length && serverEmployees.length > 0) {
         await db.transaction('rw', [db.employees, db.contracts, db.salaries, db.bonuses, db.otherPayments, db.leaves, db.attachments], async () => {
           await db.employees.clear();
           await db.contracts.clear();
@@ -49,6 +45,10 @@ export async function syncWithServer() {
           if (serverData.leaves?.length) await db.leaves.bulkAdd(serverData.leaves);
           if (serverData.attachments?.length) await db.attachments.bulkAdd(serverData.attachments);
         });
+        return true;
+      } else if (localAtts.length > serverAtts.length) {
+        // If local has newer attachments, push to MySQL server immediately!
+        await pushToServer();
         return true;
       }
     }

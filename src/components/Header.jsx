@@ -3,7 +3,7 @@ import {
   FileCheck, UserPlus, Database, RefreshCw, 
   Search, Award, Layers 
 } from 'lucide-react';
-import { seedDemoDataIfEmpty } from '../db/database';
+import { seedDemoDataIfEmpty, syncWithServer } from '../db/database';
 
 export default function Header({ 
   employees = [], 
@@ -79,6 +79,19 @@ export default function Header({
 
           <button className="btn btn-secondary btn-sm" onClick={onOpenNewEmpModal}>
             <UserPlus size={16} /> موظف جديد
+          </button>
+
+          <button 
+            className="btn btn-primary btn-sm" 
+            onClick={async () => {
+              const synced = await syncWithServer();
+              if (synced) alert('✅ تم مزامنة كامل المرفقات والتحديدات فورياً مع سيرفر الفريق (MySQL)!');
+              else alert('⚡ تم التنسيق مع قاعدة البيانات المحلية وسيرفر الفريق.');
+            }}
+            title="مزامنة فورية مع السيرفر لتلقي مرفقات وتعديلات الفريق الحية"
+            style={{ backgroundColor: '#059669', borderColor: '#059669', color: '#ffffff' }}
+          >
+            <RefreshCw size={16} /> مزامنة الفريق الحية
           </button>
 
           <button className="btn btn-secondary btn-sm" onClick={onOpenBackupModal} title="تصدير واستعادة النسخة الاحتياطية">

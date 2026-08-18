@@ -53,6 +53,14 @@ export default function App() {
     initData();
   }, []);
 
+  // Periodic background sync with central MySQL server every 20 seconds for multi-user team collaboration
+  useEffect(() => {
+    const interval = setInterval(() => {
+      syncWithServer();
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Select first employee automatically if none selected or if empty
   useEffect(() => {
     if (!isInitializing && employees.length === 0) {
