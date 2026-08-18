@@ -68,13 +68,13 @@ export default function FinalSettlementDraftTab({ employee }) {
         {/* Company Approved Net Card */}
         <div style={{ background: '#ecfdf5', border: '1.5px solid #10b981', borderRadius: 'var(--radius-md)', padding: '0.75rem 0.5rem', textAlign: 'center' }}>
           <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#065f46', marginBottom: '0.2rem' }}>
-            ✅ صافي المستحق النهائي المعتمد (الشركة)
+            ✅ صافي المستحق النهائي المعتمد (النسخة المعدلة)
           </div>
           <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#047857' }}>
-            90,810 ﷼
+            78,897.50 ﷼
           </div>
           <div style={{ fontSize: '0.7rem', color: '#065f46', marginTop: '0.2rem' }}>
-            شاملاً نهاية الخدمة والإجازات والعمل عن بعد بعد الخصم
+            نهاية الخدمة بـ 50,462.50 ﷼ + الإجازات والعمل عن بعد بعد الخصم
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function FinalSettlementDraftTab({ employee }) {
             ⚠️ فارق التجاوز والمطالبة المرفوضة
           </div>
           <div style={{ fontSize: '1.65rem', fontWeight: 900, color: '#b45309' }}>
-            555,505.21 ﷼
+            567,417.71 ﷼
           </div>
           <div style={{ fontSize: '0.7rem', color: '#92400e', marginTop: '0.2rem' }}>
             فارق غير مثبت قانونياً ومرفوض بالكامل
@@ -108,7 +108,7 @@ export default function FinalSettlementDraftTab({ employee }) {
       {/* Main Settlement Comparison Table */}
       <div style={{ marginBottom: '2.25rem' }}>
         <h3 style={{ fontSize: '1.1rem', fontWeight: 900, marginBottom: '1rem', color: '#0f172a', borderRight: '4px solid #8b5cf6', paddingRight: '0.5rem' }}>
-          1. مقارنة بنود المخالصة النهائية والمستحقات (النسخة الإضافية)
+          1. مقارنة بنود المخالصة النهائية والمستحقات (النسخة الإضافية المعدلة)
         </h3>
 
         <table className="custom-table print-landscape-table" style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
@@ -130,9 +130,9 @@ export default function FinalSettlementDraftTab({ employee }) {
                 مكافأة نهاية الخدمة 🎖️
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#065f46' }}>
-                62,375 ﷼
+                50,462.50 ﷼
                 <div style={{ fontSize: '0.75rem', color: '#047857', fontWeight: 500 }}>
-                  من 2021-01-01 إلى 2025-02-28 <br/>(بعد سداد وتصفية الفترة الأولى 2004-2020 بـ 211,250 ﷼)
+                  من 2022-01-01 إلى 2025-01-22 براتب 16,500 ﷼ <br/>(بعد سداد وتصفية الفترات السابقة بـ 211,250 ﷼)
                 </div>
               </td>
               <td style={{ textAlign: 'center', fontWeight: 800, color: '#991b1b' }}>
@@ -142,7 +142,7 @@ export default function FinalSettlementDraftTab({ employee }) {
                 </div>
               </td>
               <td style={{ fontSize: '0.85rem', color: '#1e293b' }}>
-                <strong>غير صحيح:</strong> أقر الموظف باستلام 211,250 ﷼ عن الفترة الأولى من 01-06-2004 إلى 31-01-2020. الصافي المتبقي المستحق المعتمد بالمخالصة للفترة الثانية هو <strong>62,375 ﷼</strong>. (علماً بأن آخر يوم عمل فعلي: <strong>22-01-2025</strong>، وتاريخ انتهاء العلاقة التعاقدية ونقل الكفالة الفعلي: <strong>22-10-2025</strong>).
+                <strong>غير صحيح:</strong> احتسبت نهاية الخدمة للفترة الجديدة من <strong>01-01-2022 حتى 22-01-2025</strong> على أساس راتب <strong>16,500 ﷼</strong> لتبلغ مكافأة نهاية الخدمة المعتمدة <strong>50,462.50 ﷼</strong>. (مع إقرار الموظف باستلام 211,250 ﷼ عن الفترة من 01-06-2004 إلى 31-01-2020).
               </td>
             </tr>
 
@@ -211,13 +211,13 @@ export default function FinalSettlementDraftTab({ employee }) {
                 إجمالي المستحقات قبل سداد الحوالات والخصومات 📊
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#065f46', fontSize: '1.05rem' }}>
-                106,625 ﷼
+                94,712.50 ﷼
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#991b1b', fontSize: '1.05rem' }}>
                 646,315.21 ﷼
               </td>
               <td style={{ fontSize: '0.85rem', color: '#334155' }}>
-                مجموع بنود المستحقات الأساسية قبل تنزيل الدفعات والحوالات المسددة.
+                مجموع بنود المستحقات الأساسية (50,462.50 ﷼ نهاية خدمة + 26,000 ﷼ إجازات + 18,250 ﷼ رواتب).
               </td>
             </tr>
 
@@ -247,13 +247,13 @@ export default function FinalSettlementDraftTab({ employee }) {
                 🎯 صافي المبلغ النهائي المستحق صرفه بالمخالصة
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#047857', fontSize: '1.25rem', backgroundColor: '#d1fae5' }}>
-                90,810 ﷼
+                78,897.50 ﷼
               </td>
               <td style={{ textAlign: 'center', fontWeight: 900, color: '#b91c1c', fontSize: '1.25rem', backgroundColor: '#fee2e2' }}>
                 646,315.21 ﷼
               </td>
               <td style={{ color: '#065f46', fontSize: '0.9rem' }}>
-                الصافي النهائي القانوني والمحاسبي المعتمد والمستحق صرفه هو <strong>90,810 ﷼</strong>.
+                الصافي النهائي المعتمد بالمخالصة في هذه النسخة هو <strong>78,897.50 ﷼</strong>.
               </td>
             </tr>
           </tbody>
@@ -357,7 +357,7 @@ export default function FinalSettlementDraftTab({ employee }) {
               <strong>الفترة الأولى (المسواة والمصفاة سابقاً):</strong> من 01-06-2004 حتى 31-01-2020 ⬅️ مدتها <strong>15 سنة و 8 أشهر (188 شهراً)</strong> — (أقر الموظف باستلام تصفيتها الكاملة بمبلغ 211,250 ﷼ بموجب مخالصات وعقود إلكترونية موثقة وإقرارات شخصية وبناءً على طلبه).
             </li>
             <li>
-              <strong>الفترة الثانية (المعتمدة في التصفية بالمخالصة):</strong> من 01-01-2021 حتى 28-02-2025 ⬅️ مدتها <strong>4 سنوات و 2 شهر (50 شهراً)</strong> — (احتسب عنها مكافأة قدرها 62,375 ﷼، واستلم خلالها بحوالات بنكية موثقة مبلغ 15,815 ﷼ على حوالتين: حوالة بمبلغ 8,250 ﷼ وحوالة بمبلغ 7,565 ﷼ تحت حساب نهاية الخدمة والإجازات).
+              <strong>الفترة الثانية (النسخة الإضافية المعدلة):</strong> تم احتساب مكافأة نهاية الخدمة بالنسخة المعدلة من <strong>01-01-2022 حتى 22-01-2025</strong> على أساس راتب <strong>16,500 ﷼</strong> لتبلغ <strong>50,462.50 ﷼</strong> (بدلاً من 62,375 ﷼)، مع استلام الموظف لحوالتين موثقتين بمبلغ 15,815 ﷼ تحت الحساب.
             </li>
             <li>
               <strong>آخر يوم عمل فعلي للموظف:</strong> <strong>22-01-2025</strong> (حيث بلغت الفترة من 01-01-2021 حتى آخر يوم عمل فعلي 4 سنوات و 21 يوماً).
