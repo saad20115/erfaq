@@ -206,6 +206,24 @@ export default function FinalSettlementDraftTab({ employee }) {
               </td>
             </tr>
 
+            <tr style={{ backgroundColor: '#fffbe8', fontWeight: 900 }}>
+              <td style={{ fontWeight: 900, color: '#92400e' }}>
+                خصومات مبالغ مستلمة مسبقاً (حوالات بنكية) 💳
+              </td>
+              <td style={{ textAlign: 'center', fontWeight: 800, color: '#64748b' }}>
+                -
+              </td>
+              <td style={{ textAlign: 'center', fontWeight: 900, color: '#b91c1c' }}>
+                -15,815 ﷼
+                <div style={{ fontSize: '0.75rem', color: '#991b1b', fontWeight: 500 }}>
+                  (حوالتين موثقتين: 8,250 ﷼ + 7,565 ﷼)
+                </div>
+              </td>
+              <td style={{ fontSize: '0.85rem', color: '#92400e' }}>
+                مثبتة بحوالات بنكية مسددة لحساب الموظف تحت حساب نهاية الخدمة والإجازات.
+              </td>
+            </tr>
+
             <tr style={{ backgroundColor: '#ecfdf5', fontWeight: 900, borderTop: '2px solid #059669', borderBottom: '2px solid #059669' }}>
               <td style={{ fontWeight: 900, color: '#065f46', fontSize: '1rem' }}>
                 🎯 صافي المبلغ النهائي المستحق صرفه بالمخالصة
